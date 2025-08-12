@@ -1,0 +1,19 @@
+defmodule MiniProject.Prescriptions.Prescription do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "prescriptions" do
+    field :"detail", :string
+    field :practitioner_id, :id
+    field :patient_id, :id
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(prescription, attrs) do
+    prescription
+    |> cast(attrs, [:"detail"])
+    |> validate_required([:"detail"])
+  end
+end

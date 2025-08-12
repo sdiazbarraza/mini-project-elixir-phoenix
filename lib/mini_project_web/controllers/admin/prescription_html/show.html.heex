@@ -1,0 +1,15 @@
+<.header>
+  Prescription {@prescription.id}
+  <:subtitle>This is a prescription record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/admin/prescriptions/#{@prescription}/edit"}>
+      <.button>Edit prescription</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title=" detail">{@prescription. detail}</:item>
+</.list>
+
+<.back navigate={~p"/admin/prescriptions"}>Back to prescriptions</.back>
