@@ -3,7 +3,6 @@ defmodule MiniProjectWeb.Admin.PatientController do
 
   alias MiniProject.Patients
   alias MiniProject.Patients.Patient
-  alias FlopPhoenix.Phoenix
 
   def index(conn, params) do
      {:ok, {patients, meta}} = Flop.validate_and_run(Patient, params, for: Patient)

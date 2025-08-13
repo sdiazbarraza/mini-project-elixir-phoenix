@@ -3,7 +3,6 @@ defmodule MiniProjectWeb.Admin.PractitionerController do
 
   alias MiniProject.Practitioners
   alias MiniProject.Practitioners.Practitioner
-  alias FlopPhoenix.Phoenix
   
   def index(conn, params) do
     {:ok, {practitioners, meta}} = Flop.validate_and_run(Practitioner, params, for: Practitioner)
