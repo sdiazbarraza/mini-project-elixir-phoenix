@@ -7,7 +7,7 @@ defmodule MiniProjectWeb.Admin.PractitionerController do
   
   def index(conn, params) do
     {:ok, {practitioners, meta}} = Flop.validate_and_run(Practitioner, params, for: Practitioner)
-    render(conn, :index, layout: false, practitioners: practitioners, meta: meta)
+    render(conn, :index, practitioners: practitioners, meta: meta)
   end
 
   def new(conn, _params) do

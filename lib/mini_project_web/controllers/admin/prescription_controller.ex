@@ -17,8 +17,7 @@ defmodule MiniProjectWeb.Admin.PrescriptionController do
 
     render(conn, :index,
       prescriptions: prescriptions,
-      meta: meta,
-      layout: false
+      meta: meta
     )
   end
 

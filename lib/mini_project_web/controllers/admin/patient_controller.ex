@@ -7,7 +7,7 @@ defmodule MiniProjectWeb.Admin.PatientController do
 
   def index(conn, params) do
      {:ok, {patients, meta}} = Flop.validate_and_run(Patient, params, for: Patient)
-    render(conn, :index, layout: false, patients: patients, meta: meta)
+    render(conn, :index, patients: patients, meta: meta)
   end
 
   def new(conn, _params) do
