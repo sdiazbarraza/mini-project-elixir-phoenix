@@ -1,4 +1,14 @@
 defmodule MiniProject.Prescriptions do
+
+  import Ecto.Query
+  alias MiniProject.Repo
+
+  alias MiniProject.Patients.Patient
+  alias MiniProject.Practitioners.Practitioner
+  alias MiniProject.Prescriptions.Prescription
+
+  alias Faker.Lorem
+
   @moduledoc """
   The Prescriptions context.
   """
@@ -101,4 +111,31 @@ defmodule MiniProject.Prescriptions do
   def change_prescription(%Prescription{} = prescription, attrs \\ %{}) do
     Prescription.changeset(prescription, attrs)
   end
+
+  def loader do
+    practitioners = Repo.all(Practitioner)
+    patients = Repo.all(Patient)
+
+    if practitioners == [] or patients == [] do
+      {:error, "No hay médicos o pacientes disponibles para asignar recetas"}
+    else
+      for _ <- 1..100 do
+        practitioner = Enum.random(practitioners)
+        patient = Enum.random(patients)
+
+        if practitioner && patient do
+          %Prescription{}
+          |> Prescription.changeset(%{
+            detail: Lorem.sentence(),
+            practitioner_id: practitioner.id,
+            patient_id: patient.id
+          })
+          |> Repo.insert()
+        else
+          IO.puts("Error: Practitioner o Patient es nil")
+        end
+      end
+      {:ok, "Recetas creadas exitosamente"}
+    end
+  end 
 end

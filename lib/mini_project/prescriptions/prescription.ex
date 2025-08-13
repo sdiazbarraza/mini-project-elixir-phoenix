@@ -13,7 +13,7 @@ defmodule MiniProject.Prescriptions.Prescription do
   @doc false
   def changeset(prescription, attrs) do
     prescription
-    |> cast(attrs, [:detail])
+    |> cast(attrs, [:detail, :practitioner_id, :patient_id])
     |> validate_required([:detail])
   end
 end
