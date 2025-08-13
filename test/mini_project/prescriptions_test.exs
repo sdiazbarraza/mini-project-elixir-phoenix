@@ -8,7 +8,7 @@ defmodule MiniProject.PrescriptionsTest do
 
     import MiniProject.PrescriptionsFixtures
 
-    @invalid_attrs %{" detail": nil}
+    @invalid_attrs %{detail: nil}
 
     test "list_prescriptions/0 returns all prescriptions" do
       prescription = prescription_fixture()
@@ -21,7 +21,7 @@ defmodule MiniProject.PrescriptionsTest do
     end
 
     test "create_prescription/1 with valid data creates a prescription" do
-      valid_attrs = %{" detail": "some  detail"}
+      valid_attrs = %{detail: "some  detail"}
 
       assert {:ok, %Prescription{} = prescription} = Prescriptions.create_prescription(valid_attrs)
       assert prescription. detail == "some  detail"

@@ -8,7 +8,7 @@ defmodule MiniProject.PractitionersTest do
 
     import MiniProject.PractitionersFixtures
 
-    @invalid_attrs %{" first_name": nil, last_name: nil, phone: nil, birthdate: nil, email: nil}
+    @invalid_attrs %{first_name: nil, last_name: nil, phone: nil, birthdate: nil, email: nil}
 
     test "list_practitioners/0 returns all practitioners" do
       practitioner = practitioner_fixture()
@@ -21,10 +21,10 @@ defmodule MiniProject.PractitionersTest do
     end
 
     test "create_practitioner/1 with valid data creates a practitioner" do
-      valid_attrs = %{" first_name": "some  first_name", last_name: "some last_name", phone: "some phone", birthdate: ~D[2025-08-11], email: "some email"}
+      valid_attrs = %{first_name: "some  first_name", last_name: "some last_name", phone: "some phone", birthdate: ~D[2025-08-11], email: "some email"}
 
       assert {:ok, %Practitioner{} = practitioner} = Practitioners.create_practitioner(valid_attrs)
-      assert practitioner. first_name == "some  first_name"
+      assert practitioner.first_name == "some  first_name"
       assert practitioner.last_name == "some last_name"
       assert practitioner.phone == "some phone"
       assert practitioner.birthdate == ~D[2025-08-11]
@@ -37,7 +37,7 @@ defmodule MiniProject.PractitionersTest do
 
     test "update_practitioner/2 with valid data updates the practitioner" do
       practitioner = practitioner_fixture()
-      update_attrs = %{" first_name": "some updated  first_name", last_name: "some updated last_name", phone: "some updated phone", birthdate: ~D[2025-08-12], email: "some updated email"}
+      update_attrs = %{first_name: "some updated  first_name", last_name: "some updated last_name", phone: "some updated phone", birthdate: ~D[2025-08-12], email: "some updated email"}
 
       assert {:ok, %Practitioner{} = practitioner} = Practitioners.update_practitioner(practitioner, update_attrs)
       assert practitioner. first_name == "some updated  first_name"

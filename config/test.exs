@@ -9,8 +9,8 @@ config :bcrypt_elixir, :log_rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :mini_project, MiniProject.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "postgres1",
+  password: "postgres1",
   hostname: "localhost",
   database: "mini_project_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,

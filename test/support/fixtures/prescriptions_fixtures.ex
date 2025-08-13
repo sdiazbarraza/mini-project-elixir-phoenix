@@ -11,7 +11,9 @@ defmodule MiniProject.PrescriptionsFixtures do
     {:ok, prescription} =
       attrs
       |> Enum.into(%{
-         detail: "some  detail"
+         detail: "some  detail",
+         patient_id: 1, # ID de ejemplo para el paciente
+         practitioner_id: 1 # ID de ejemplo para el médico         
       })
       |> MiniProject.Prescriptions.create_prescription()
 
