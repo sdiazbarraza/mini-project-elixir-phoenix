@@ -60,6 +60,8 @@ defmodule MiniProject.MixProject do
       {:bandit, "~> 1.5"},
       {:httpoison, "~> 1.8"},
       {:faker, "~> 0.17"},
+      {:flop, "~> 0.26.3"},
+      {:flop_phoenix, "~> 0.25.3"}  
     ]
   end
 
