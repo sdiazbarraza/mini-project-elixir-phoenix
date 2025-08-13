@@ -13,7 +13,7 @@ defmodule MiniProject.PractitionersFixtures do
       |> Enum.into(%{
          first_name: "some  first_name",
         birthdate: ~D[2025-08-11],
-        email: "some email",
+        email: "123@123.com",
         last_name: "some last_name",
         phone: "some phone"
       })
