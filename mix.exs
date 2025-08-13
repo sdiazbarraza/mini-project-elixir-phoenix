@@ -59,6 +59,7 @@ defmodule MiniProject.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:httpoison, "~> 1.8"},
+      {:faker, "~> 0.17"},
     ]
   end
 
