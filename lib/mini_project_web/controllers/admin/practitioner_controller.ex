@@ -6,7 +6,7 @@ defmodule MiniProjectWeb.Admin.PractitionerController do
 
   def index(conn, _params) do
     practitioners = Practitioners.list_practitioners()
-    render(conn, :index, practitioners: practitioners)
+    render(conn, :index, layout: false, practitioners: practitioners)
   end
 
   def new(conn, _params) do

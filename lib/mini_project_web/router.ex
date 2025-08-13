@@ -26,6 +26,7 @@ defmodule MiniProjectWeb.Router do
     pipe_through :browser
 
     resources "/patients", PatientController
+    resources "/practitioners", PractitionerController
   end
 
   # Other scopes may use custom stacks.
