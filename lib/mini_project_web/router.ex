@@ -22,6 +22,12 @@ defmodule MiniProjectWeb.Router do
     get "/admin", AdminController, :index
   end
 
+  scope "/admin", MiniProjectWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    resources "/patients", PatientController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", MiniProjectWeb do
   #   pipe_through :api

@@ -6,7 +6,7 @@ defmodule MiniProjectWeb.Admin.PatientController do
 
   def index(conn, _params) do
     patients = Patients.list_patients()
-    render(conn, :index, patients: patients)
+    render(conn, :index, layout: false, patients: patients)
   end
 
   def new(conn, _params) do
