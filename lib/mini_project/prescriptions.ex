@@ -4,7 +4,7 @@ defmodule MiniProject.Prescriptions do
   alias MiniProject.Patients.Patient
   alias MiniProject.Practitioners.Practitioner
   alias MiniProject.Prescriptions.Prescription
-
+  alias Flop
   alias Faker.Lorem
 
   @moduledoc """
@@ -135,5 +135,13 @@ defmodule MiniProject.Prescriptions do
       end
       {:ok, "Recetas creadas exitosamente"}
     end
+  end 
+
+  def list_prescriptions(params \\ %{}) do
+    query =
+      Prescription
+      |> Repo.preload([:patient, :practitioner])  # preload relaciones
+
+    Flop.validate_and_run(query, params, for: Prescription, repo: Repo)
   end 
 end

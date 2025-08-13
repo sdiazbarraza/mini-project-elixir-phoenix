@@ -1,12 +1,25 @@
 defmodule MiniProjectWeb.Admin.PrescriptionController do
   use MiniProjectWeb, :controller
+  import Ecto.Query
   alias MiniProject.Repo
   alias MiniProject.Prescriptions
   alias MiniProject.Prescriptions.Prescription
 
-  def index(conn, _params) do
-    prescriptions = Prescription |> Repo.all() |> Repo.preload([:patient, :practitioner])
-    render(conn, :index, layout: false, prescriptions: prescriptions)
+  def index(conn, params) do
+    query =
+      from p in Prescription,
+        join: patient in assoc(p, :patient),
+        join: practitioner in assoc(p, :practitioner),
+        preload: [patient: patient, practitioner: practitioner]
+
+    {:ok, {prescriptions, meta}} =
+      Flop.validate_and_run(query, params, for: Prescription, repo: Repo)
+
+    render(conn, :index,
+      prescriptions: prescriptions,
+      meta: meta,
+      layout: false
+    )
   end
 
   def new(conn, _params) do

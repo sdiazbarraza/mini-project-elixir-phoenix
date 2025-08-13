@@ -2,7 +2,7 @@
   Listing Prescriptions
 </.header>
 
-<.table id="prescriptions" rows={@prescriptions} row_click={&JS.navigate(~p"/admin/prescriptions/#{&1}")}>
+<Flop.Phoenix.table items={@prescriptions} meta={@meta} path={~p"/admin/prescriptions"} row_click={&JS.navigate(~p"/admin/prescriptions/#{&1}")}>
   <:col :let={prescription} label="detail">{prescription.detail}</:col>
   <:col :let={prescription} label="Name Patient">{prescription.patient.first_name} {prescription.patient.last_name}</:col>
   <:col :let={prescription} label="Name Practitioner">{prescription.practitioner.first_name} {prescription.practitioner.last_name}</:col>
@@ -12,4 +12,5 @@
       <.link navigate={~p"/admin/prescriptions/#{prescription}"}>Show</.link>
     </div>
   </:action>
-</.table>
+</Flop.Phoenix.table>
+<Flop.Phoenix.pagination meta={@meta} path={~p"/admin/prescriptions"} />
