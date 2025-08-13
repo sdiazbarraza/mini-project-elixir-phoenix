@@ -7,8 +7,8 @@
   </:actions>
 </.header>
 
-<.table id="patients" rows={@patients} row_click={&JS.navigate(~p"/admin/patients/#{&1}")}>
-  <:col :let={patient} label=" first name">{patient. first_name}</:col>
+<Flop.Phoenix.table items={@patients} meta={@meta} path={~p"/admin/patients"} row_click={&JS.navigate(~p"/admin/patients/#{&1}")}>
+  <:col :let={patient} label="First name">{patient.first_name}</:col>
   <:col :let={patient} label="Last name">{patient.last_name}</:col>
   <:col :let={patient} label="Phone">{patient.phone}</:col>
   <:col :let={patient} label="Birthdate">{patient.birthdate}</:col>
@@ -24,4 +24,5 @@
       Delete
     </.link>
   </:action>
-</.table>
+</Flop.Phoenix.table>
+<Flop.Phoenix.pagination meta={@meta} path={~p"/admin/patients"} />

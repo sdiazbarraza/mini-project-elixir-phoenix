@@ -2,6 +2,13 @@ defmodule MiniProject.Patients.Patient do
   use Ecto.Schema
   import Ecto.Changeset
 
+   @derive {
+    Flop.Schema,
+    filterable: [:first_name, :last_name],
+    sortable: [:first_name, :last_name],
+    default_limit: 50
+  }
+
   schema "patients" do
     field :first_name, :string
     field :last_name, :string
