@@ -18,6 +18,8 @@ defmodule MiniProjectWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    
+    get "/admin", AdminController, :index
   end
 
   # Other scopes may use custom stacks.
