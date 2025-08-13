@@ -2,6 +2,13 @@ defmodule MiniProject.Practitioners.Practitioner do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {
+    Flop.Schema,
+    filterable: [:first_name, :last_name],
+    sortable: [:first_name, :last_name],
+    default_limit: 50
+  }
+
   schema "practitioners" do
     field :first_name, :string
     field :last_name, :string
