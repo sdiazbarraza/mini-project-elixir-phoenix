@@ -3,9 +3,7 @@
 
 ## Requisitos previos
 
-
 Asegúrate de tener instalados los siguientes paquetes en tu sistema (Linux):
-
 
 ```bash
 sudo apt update
@@ -13,7 +11,30 @@ sudo apt install -y curl git build-essential autoconf libssl-dev libncurses5-dev
  libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev \
  unixodbc-dev xsltproc fop libxml2-utils libncurses-dev openjdk-11-jdk
 ```
+### Instalación de postgresql
+
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+
+### Crear usuario postgres1
+
+Entrar a la consola de PostgreSQL como usuario administrador:
+
+```bash
+sudo -u postgres psql
+```
+
+En la consola ejecutar 
+
+```bash
+CREATE USER postgres1 WITH PASSWORD 'postgres1';
+ALTER USER postgres1 WITH SUPERUSER;
+```
+
+
 ### Instalación de asdf
+
 Clona el repositorio de asdf :
 
 
@@ -30,7 +51,7 @@ Ejecuta para instalar Erlang y Elixir desde el
 asdf install
 ```
 
-### Crear migraciones
+### Creación de migraciones con generadores
 
 Pacientes
 
@@ -52,21 +73,27 @@ mix phx.gen.html --web admin Prescriptions Prescription prescriptions \
  detail:text practitioner_id:references:practitioners patient_id:references:patients
 ```
 
-# MiniProject
+### Ejecutar migraciones
 
-To start your Phoenix server:
+```
+mix ecto.migrate
+```
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+### Crear usuario para ingreso al sistema
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Abrir consola
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+```bash
+iex -S mix
+```
 
-## Learn more
+Ejecutar la siguiente línea
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```bash
+alias MiniProject.Accounts
+
+{:ok, user} = Accounts.register_user(%{
+  email: "admin@example.com",
+  password: "superseguro123"
+})
+```
