@@ -1,6 +1,4 @@
 defmodule MiniProject.Prescriptions do
-
-  import Ecto.Query
   alias MiniProject.Repo
 
   alias MiniProject.Patients.Patient

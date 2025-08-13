@@ -27,6 +27,7 @@ defmodule MiniProjectWeb.Router do
 
     resources "/patients", PatientController
     resources "/practitioners", PractitionerController
+    resources "/prescriptions", PrescriptionController
   end
 
   # Other scopes may use custom stacks.

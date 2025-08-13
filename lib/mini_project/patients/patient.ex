@@ -9,6 +9,7 @@ defmodule MiniProject.Patients.Patient do
     field :birthdate, :date
     field :email, :string
 
+    has_many :prescriptions, MiniProject.Prescriptions.Prescription
     timestamps(type: :utc_datetime)
   end
 

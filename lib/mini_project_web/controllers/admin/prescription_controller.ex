@@ -1,12 +1,12 @@
 defmodule MiniProjectWeb.Admin.PrescriptionController do
   use MiniProjectWeb, :controller
-
+  alias MiniProject.Repo
   alias MiniProject.Prescriptions
   alias MiniProject.Prescriptions.Prescription
 
   def index(conn, _params) do
-    prescriptions = Prescriptions.list_prescriptions()
-    render(conn, :index, prescriptions: prescriptions)
+    prescriptions = Prescription |> Repo.all() |> Repo.preload([:patient, :practitioner])
+    render(conn, :index, layout: false, prescriptions: prescriptions)
   end
 
   def new(conn, _params) do
@@ -27,7 +27,7 @@ defmodule MiniProjectWeb.Admin.PrescriptionController do
   end
 
   def show(conn, %{"id" => id}) do
-    prescription = Prescriptions.get_prescription!(id)
+    prescription = Prescriptions.get_prescription!(id) |> Repo.preload([:practitioner, :patient])
     render(conn, :show, prescription: prescription)
   end
 

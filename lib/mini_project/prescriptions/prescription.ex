@@ -4,8 +4,8 @@ defmodule MiniProject.Prescriptions.Prescription do
 
   schema "prescriptions" do
     field :detail, :string
-    field :practitioner_id, :id
-    field :patient_id, :id
+    belongs_to :patient, MiniProject.Patients.Patient
+    belongs_to :practitioner, MiniProject.Practitioners.Practitioner
 
     timestamps(type: :utc_datetime)
   end

@@ -1,23 +1,15 @@
 <.header>
   Listing Prescriptions
-  <:actions>
-    <.link href={~p"/admin/prescriptions/new"}>
-      <.button>New Prescription</.button>
-    </.link>
-  </:actions>
 </.header>
 
 <.table id="prescriptions" rows={@prescriptions} row_click={&JS.navigate(~p"/admin/prescriptions/#{&1}")}>
-  <:col :let={prescription} label=" detail">{prescription. detail}</:col>
+  <:col :let={prescription} label="detail">{prescription.detail}</:col>
+  <:col :let={prescription} label="Name Patient">{prescription.patient.first_name} {prescription.patient.last_name}</:col>
+  <:col :let={prescription} label="Name Practitioner">{prescription.practitioner.first_name} {prescription.practitioner.last_name}</:col>
+
   <:action :let={prescription}>
     <div class="sr-only">
       <.link navigate={~p"/admin/prescriptions/#{prescription}"}>Show</.link>
     </div>
-    <.link navigate={~p"/admin/prescriptions/#{prescription}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={prescription}>
-    <.link href={~p"/admin/prescriptions/#{prescription}"} method="delete" data-confirm="Are you sure?">
-      Delete
-    </.link>
   </:action>
 </.table>
