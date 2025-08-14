@@ -79,6 +79,32 @@ mix phx.gen.html --web admin Prescriptions Prescription prescriptions \
 mix ecto.migrate
 ```
 
+### Cargar de Loaders
+
+Abrir consola 
+
+```bash
+iex -S mix
+```
+
+Recetas
+
+```bash
+MiniProject.Prescriptions.loader()
+```
+
+Pacientes
+
+```bash
+MiniProject.Patients.loader()
+```
+
+Médicos
+
+```bash
+MiniProject.Practitioners.loader()
+```
+
 ### Crear usuario para ingreso al sistema
 
 Abrir consola
@@ -96,4 +122,19 @@ alias MiniProject.Accounts
   email: "admin@example.com",
   password: "superseguro123"
 })
+```
+
+## Consideraciones
+
+Para hacer uso del show en cada recurso de los CRUD de la aplicación, se debe hacer
+click en la fila de la tabla del index del recurso visto.
+
+Para las apis cada recurso al crear y actualizar el recurso debe seguir la siguiente estructura
+
+```bash
+{"practitioner": data para crear o actualizar}
+
+{"patient": data para crear o actualizar}
+
+{"prescription": data para crear o actualizar}
 ```
