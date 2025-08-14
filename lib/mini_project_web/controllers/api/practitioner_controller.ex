@@ -15,7 +15,7 @@ defmodule MiniProjectWeb.Api.PractitionerController do
     with {:ok, %Practitioner{} = practitioner} <- Practitioners.create_practitioner(practitioner_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/api/practitioners/#{practitioner}")
+      |> put_resp_header("location", ~p"/api/practitioners/#{practitioner}")
       |> render(:show, practitioner: practitioner)
     end
   end
