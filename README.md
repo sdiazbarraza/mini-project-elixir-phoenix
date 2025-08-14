@@ -86,12 +86,7 @@ Abrir consola
 ```bash
 iex -S mix
 ```
-
-Recetas
-
-```bash
-MiniProject.Prescriptions.loader()
-```
+Se recomienda usar el orden siguiente para ejecutar los loaders
 
 Pacientes
 
@@ -103,6 +98,11 @@ Médicos
 
 ```bash
 MiniProject.Practitioners.loader()
+```
+Recetas
+
+```bash
+MiniProject.Prescriptions.loader()
 ```
 
 ### Crear usuario para ingreso al sistema
