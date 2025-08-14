@@ -89,9 +89,10 @@ defmodule MiniProjectWeb.Router do
     end
   end
 
-scope "/api", MiniProjectWeb.Api do
-  pipe_through :api
+  scope "/api", MiniProjectWeb.Api do
+    pipe_through :api
 
-  resources "/patients", PatientController, except: [:new, :edit]
-end  
+    resources "/patients", PatientController, except: [:new, :edit]
+    resources "/practitioners", PractitionerController, except: [:new, :edit]
+  end  
 end
