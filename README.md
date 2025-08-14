@@ -51,6 +51,12 @@ Ejecuta para instalar Erlang y Elixir desde el
 asdf install
 ```
 
+### Instalar dependencias
+
+```bash
+mix deps.get
+```
+
 ### Creación de migraciones con generadores
 
 Pacientes
@@ -123,8 +129,16 @@ alias MiniProject.Accounts
   password: "superseguro123"
 })
 ```
+### Levantar el servidor
+
+```bash
+ mix phx.server
+```
+
 
 ## Consideraciones
+
+Se recomienda seguir los pasos anteriores de manera secuencial
 
 Para hacer uso del show en cada recurso de los CRUD de la aplicación, se debe hacer
 click en la fila de la tabla del index del recurso visto.
