@@ -88,4 +88,10 @@ defmodule MiniProjectWeb.Router do
       live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
   end
+
+scope "/api", MiniProjectWeb.Api do
+  pipe_through :api
+
+  resources "/patients", PatientController, except: [:new, :edit]
+end  
 end
