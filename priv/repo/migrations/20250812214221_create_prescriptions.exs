@@ -4,8 +4,8 @@ defmodule MiniProject.Repo.Migrations.CreatePrescriptions do
   def change do
     create table(:prescriptions) do
       add :detail, :text, null: false
-      add :practitioner_id, references(:practitioners, on_delete: :nothing), null: false
-      add :patient_id, references(:patients, on_delete: :nothing), null: false
+      add :practitioner_id, references(:practitioners, on_delete: :delete_all), null: false
+      add :patient_id, references(:patients, on_delete: :delete_all), null: false
 
       timestamps(type: :utc_datetime)
     end
