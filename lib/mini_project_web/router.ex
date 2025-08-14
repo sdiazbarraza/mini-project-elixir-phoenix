@@ -94,5 +94,6 @@ defmodule MiniProjectWeb.Router do
 
     resources "/patients", PatientController, except: [:new, :edit]
     resources "/practitioners", PractitionerController, except: [:new, :edit]
+    resources "/prescriptions", PrescriptionController, except: [:new, :edit]
   end  
 end
